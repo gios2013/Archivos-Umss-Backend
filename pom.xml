@@ -31,6 +31,7 @@
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
         <commons-lang3.version>3.1</commons-lang3.version>
+        <flyway-core.version>8.1.0</flyway-core.version>
     </properties>
 
     <dependencies>
@@ -45,6 +46,7 @@
             <version>1.18.22</version>
             <optional>true</optional>
         </dependency>
+
     </dependencies>
 
 </project>
