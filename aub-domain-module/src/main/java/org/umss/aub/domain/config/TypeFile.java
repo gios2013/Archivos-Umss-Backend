@@ -12,7 +12,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class TypeFile {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "type_file_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String code;

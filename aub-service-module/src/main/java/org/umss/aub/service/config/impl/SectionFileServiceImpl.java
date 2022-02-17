@@ -38,6 +38,13 @@ public class SectionFileServiceImpl implements SectionFileService {
 
     @Override
     @Transactional(readOnly = true)
+    public SectionFileDTO findByUuid(String Uuid) {
+        SectionFile sectionFile =sectionFileRepository.findOneByUuid(Uuid);
+        return sectionFileMapper.toDto(sectionFile);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<SectionFileDTO> findAll() {
         return sectionFileRepository.findAll().stream().map(sectionFileMapper::toDto).collect(Collectors.toList());
     }
@@ -45,20 +52,20 @@ public class SectionFileServiceImpl implements SectionFileService {
     @Override
     @Transactional(readOnly = true)
     public List<SectionFileDTO> findAllActive() {
-        List<SectionFile> sectionActives = sectionFileRepository.findAll();
-//                .stream()
-//                .filter(SectionFile::getInitials_und)
-//                .collect(Collectors.toList());
+        List<SectionFile> sectionActives = sectionFileRepository.findAll()
+                .stream()
+                .filter(SectionFile::getActive)
+               .collect(Collectors.toList());
         return sectionActives.stream().map(sectionFileMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
     public void logicalDelete(Integer id) {
-//        var sectionFile = sectionFileRepository.findById(id)
-//                .orElseThrow(() -> new IllegalArgumentException("Invalid Section Id " + id));
-//
-//        sectionFile.setActive(Boolean.FALSE);
-//        sectionFileRepository.save(sectionFile);
+        var sectionFile = sectionFileRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Section Id " + id));
+
+        sectionFile.setActive(Boolean.FALSE);
+        sectionFileRepository.save(sectionFile);
     }
 
 }

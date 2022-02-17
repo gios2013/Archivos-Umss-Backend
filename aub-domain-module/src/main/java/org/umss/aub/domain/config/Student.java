@@ -9,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "student")
@@ -16,7 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "student_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String student_id;
     private Integer ci;
@@ -25,4 +27,9 @@ public class Student {
     private String name;
     private String gender;
     private String nationality;
+
+    @PrePersist
+    public void initializeUuid(){
+        this.setStudent_id(UUID.randomUUID().toString());
+    }
 }

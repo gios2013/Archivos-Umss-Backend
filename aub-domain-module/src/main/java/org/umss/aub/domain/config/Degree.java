@@ -17,7 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Degree {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "degree_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String degree_id;
     private Integer degree_num;

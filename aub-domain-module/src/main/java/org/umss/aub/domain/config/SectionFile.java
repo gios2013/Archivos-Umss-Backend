@@ -16,7 +16,8 @@ import java.util.Date;
 public class SectionFile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "section_file_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String code;
     private String description;
@@ -24,4 +25,5 @@ public class SectionFile {
     private String name;
     private String initials_und;
     private String section_id;
+    private Boolean active;
 }

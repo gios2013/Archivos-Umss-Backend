@@ -3,10 +3,7 @@ package org.umss.aub.web.rest.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.umss.aub.dto.config.SectionFileDTO;
 import org.umss.aub.service.config.SectionFileService;
 
@@ -32,4 +29,20 @@ public class SectionFileResource {
             return sectionFileService.findAll();
         }
     }
+
+    @PostMapping
+    public SectionFileDTO createSection(@RequestBody SectionFileDTO sectionFileDTO){
+        return sectionFileService.save(sectionFileDTO);
+    }
+
+    @GetMapping("/{sectionUuid}")
+    public SectionFileDTO getSection(@PathVariable String sectionUuid){
+        return sectionFileService.findByUuid(sectionUuid);
+    }
+
+    @PatchMapping("/{id}")
+    public void logicalDelete(@PathVariable Integer id){
+        sectionFileService.logicalDelete(id);
+    }
+
 }

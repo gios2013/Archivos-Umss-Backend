@@ -19,4 +19,5 @@ public class SectionFileDTO {
     private String name;
     private String initials_und;
     private String section_id;
+    private Boolean active = Boolean.TRUE;
 }

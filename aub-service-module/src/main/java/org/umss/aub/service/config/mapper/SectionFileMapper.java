@@ -19,6 +19,7 @@ public class SectionFileMapper implements CustomMapper<SectionFileDTO, SectionFi
         dto.setName(sectionFile.getName());
         dto.setInitials_und(sectionFile.getInitials_und());
         dto.setSection_id(sectionFile.getSection_id());
+        dto.setActive(sectionFile.getActive());
         return dto;
     }
 
@@ -32,6 +33,7 @@ public class SectionFileMapper implements CustomMapper<SectionFileDTO, SectionFi
         sectionFile.setName(sectionFileDTO.getName());
         sectionFile.setInitials_und(sectionFileDTO.getInitials_und());
         sectionFile.setSection_id(sectionFileDTO.getSection_id());
+        sectionFile.setActive(sectionFileDTO.getActive());
         return sectionFile;
     }
 }
