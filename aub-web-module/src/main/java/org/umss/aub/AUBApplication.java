@@ -5,7 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.umss.aub.constants.AubConstants;
 
 import java.net.InetAddress;
@@ -22,6 +25,17 @@ public class AUBApplication {
         var springApplication = new SpringApplication(AUBApplication.class);
         Environment environment = springApplication.run(args).getEnvironment();
         logApplicationStarup(environment);
+    }
+
+    @Bean
+    public WebMvcConfigurer configureCors() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/v1/config/**")
+                        .allowedOrigins("http://localhost:4200");
+            }
+        };
     }
 
     private static void logApplicationStarup(Environment env) {

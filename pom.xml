@@ -24,6 +24,7 @@
         <module>aub-common-module</module>
         <module>aub-mail-module</module>
         <module>aub-dto-module</module>
+        <module>aub-files-module</module>
     </modules>
 
     <properties>

@@ -1,0 +1,40 @@
+package org.umss.aub.web.rest.config;
+
+
+import org.springframework.web.bind.annotation.*;
+import org.umss.aub.dto.config.TypeFileDTO;
+import org.umss.aub.service.config.TypeFileService;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/v1/config/type")
+public class TypeFileResource {
+
+    public final TypeFileService typeFileService;
+
+    public TypeFileResource(TypeFileService typeFileService) {
+        this.typeFileService = typeFileService;
+    }
+
+    @GetMapping
+    public List<TypeFileDTO> getTypes(){
+        return typeFileService.findAll();
+    }
+
+    @PostMapping
+    public TypeFileDTO saveType(@RequestBody TypeFileDTO typeFileDTO){
+        return typeFileService.save(typeFileDTO);
+    }
+
+    @GetMapping("/byId/{id}")
+    public Optional<TypeFileDTO> getOne(@PathVariable Integer id){
+        return typeFileService.findById(id);
+    }
+
+    @GetMapping("/{typeUuid}")
+    public TypeFileDTO getByUuid(@PathVariable String typeUuid){
+        return typeFileService.findByUuid(typeUuid);
+    }
+}
