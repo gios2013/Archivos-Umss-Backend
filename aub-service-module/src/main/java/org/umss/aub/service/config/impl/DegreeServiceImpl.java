@@ -16,6 +16,7 @@ import org.umss.aub.service.config.StudentService;
 import org.umss.aub.service.config.mapper.DegreeMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -49,6 +50,21 @@ public class DegreeServiceImpl implements DegreeService {
         this.degreeStudentRecordService = degreeStudentRecordService;
     }
 
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<DegreeDTO> findAll() {
+        return degreeRepository.findAll()
+                .stream().map(degreeMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<DegreeDTO> findAllByBachiller() {
+        return degreeRepository.findAllByBachiller()
+                .stream().map(degreeMapper::toDto)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public DegreeDTO saveWithFiles(DegreeFormDTO degreeFormDTO) {

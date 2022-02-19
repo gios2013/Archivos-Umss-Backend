@@ -1,9 +1,7 @@
 package org.umss.aub.web.rest.config;
 
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.umss.aub.dto.config.DegreeDTO;
 import org.umss.aub.dto.config.DegreeFormDTO;
 import org.umss.aub.service.config.DegreeService;
@@ -19,6 +17,16 @@ public class DegreeResource {
 
     public DegreeResource(DegreeService degreeService) {
         this.degreeService = degreeService;
+    }
+
+    @GetMapping
+    public List<DegreeDTO> getAllDegrees(){
+        return degreeService.findAll();
+    }
+
+    @GetMapping("/bachiller")
+    public List<DegreeDTO> getAllByBachiller(){
+        return degreeService.findAllByBachiller();
     }
 
     @PostMapping("/unclassified")
