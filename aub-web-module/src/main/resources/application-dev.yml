@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/dev_aub_db
-    username: test1
-    password: can
+    url: jdbc:postgresql://localhost:5433/dev_aub_db
+    username: postgres
+    password: comoestas
     hikari:
       poolName: Hikari
       auto-commit: false
