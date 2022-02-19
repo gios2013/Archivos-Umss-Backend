@@ -1,0 +1,1 @@
+AlTER table section_file add active bool NOT NULL default true;
