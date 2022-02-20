@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "degree")
@@ -32,4 +33,9 @@ public class Degree {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studentid")
     private Student student;
+
+    @PrePersist
+    public void initializeUuid(){
+        this.setDegree_id(UUID.randomUUID().toString());
+    }
 }

@@ -25,7 +25,7 @@ public class StudentResource {
     }
 
     @PostMapping
-    public StudentDTO saveStudent(@RequestBody StudentDTO studentDTO){
+    public StudentDTO saveStudent(StudentDTO studentDTO){
         return studentService.save(studentDTO);
     }
 

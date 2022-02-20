@@ -24,7 +24,7 @@ public class TypeFileResource {
     }
 
     @PostMapping
-    public TypeFileDTO saveType(@RequestBody TypeFileDTO typeFileDTO){
+    public TypeFileDTO saveType(TypeFileDTO typeFileDTO){
         return typeFileService.save(typeFileDTO);
     }
 

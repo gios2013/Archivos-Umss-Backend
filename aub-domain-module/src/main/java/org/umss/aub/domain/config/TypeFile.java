@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "type_file")
@@ -19,4 +20,9 @@ public class TypeFile {
     private String code;
     private String description;
     private String type_id;
+
+    @PrePersist
+    public void initializeUuid(){
+        this.setType_id(UUID.randomUUID().toString());
+    }
 }

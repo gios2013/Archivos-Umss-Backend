@@ -39,7 +39,7 @@ public class NationalityResource {
     }
 
     @PostMapping
-    public NationalityDTO saveNationality(@RequestBody NationalityDTO nationalityDTO){
+    public NationalityDTO saveNationality(NationalityDTO nationalityDTO){
         return nationalityService.save(nationalityDTO);
     }
 
