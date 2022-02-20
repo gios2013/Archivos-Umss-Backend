@@ -31,6 +31,7 @@ public class StudentResource {
 
     @GetMapping("/{studentUuid}")
     public StudentDTO getOneByUuid(@PathVariable String studentUuid){
+
         return studentService.findByUuid(studentUuid);
     }
 
