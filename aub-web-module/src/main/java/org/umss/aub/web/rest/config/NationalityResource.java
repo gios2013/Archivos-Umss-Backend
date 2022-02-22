@@ -43,6 +43,11 @@ public class NationalityResource {
         return nationalityService.save(nationalityDTO);
     }
 
+    @PostMapping("/{id}")
+    public NationalityDTO editNationality(@PathVariable Integer id,@RequestBody NationalityDTO nationalityDTO){
+        return nationalityService.editById(id, nationalityDTO);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteNationality(@PathVariable Integer id){
         nationalityService.logicalDelete(id);

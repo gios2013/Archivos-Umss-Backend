@@ -61,6 +61,19 @@ public class NationalityServiceImpl implements NationalityService {
     }
 
     @Override
+    public NationalityDTO editById(Integer id, NationalityDTO nationalityDTO) {
+        Optional<Nationality> nationalityOptional = nationalityRepository.findById(id);
+        Nationality nationality = nationalityOptional.get();
+        Nationality edit = nationalityMapper.toEntity(nationalityDTO);
+
+        nationality.setName(edit.getName());
+        nationality.setDemonym(edit.getDemonym());
+        nationality.setCode(edit.getCode());
+        nationalityRepository.save(nationality);
+        return nationalityMapper.toDto(nationality);
+    }
+
+    @Override
     public void logicalDelete(Integer id) {
         nationalityRepository.deleteById(id);
     }

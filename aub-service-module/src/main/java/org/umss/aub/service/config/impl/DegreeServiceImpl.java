@@ -90,8 +90,22 @@ public class DegreeServiceImpl implements DegreeService {
 
         List<AttachmentDTO> attachmentDTO = degreeAttachmentService.save(degree, degreeFormDTO.getAttachment());
 
-        List<StudentRecordDTO> studentRecordDTO = degreeStudentRecordService.save(degree, degreeFormDTO.getStudentRecord());
+        List<StudentRecordDTO> studentRecordDTO = degreeStudentRecordService
+                .save(degree, degreeFormDTO.getStudentRecord());
 
         return degreeMapper.toDto(degree, attachmentDTO, studentRecordDTO);
+    }
+
+    @Override
+    public DegreeDTO getByUuid(String uuid) {
+        Degree degree = degreeRepository.findOneByUuid(uuid);
+        List<AttachmentDTO> attachmentDTO = degreeAttachmentService.getById(degree);
+        List<StudentRecordDTO> studentRecordDTO = degreeStudentRecordService.getById(degree);
+        return degreeMapper.toDto(degree, attachmentDTO,studentRecordDTO);
+    }
+
+    @Override
+    public void logicalDelte(Integer id) {
+
     }
 }

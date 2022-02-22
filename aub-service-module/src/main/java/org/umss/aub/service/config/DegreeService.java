@@ -6,5 +6,5 @@ import org.umss.aub.dto.config.DegreeFormDTO;
 import org.umss.aub.service.CrudServiceBase;
 import org.umss.aub.service.FormServiceBase;
 
-public interface DegreeService extends FormServiceBase<DegreeFormDTO, DegreeDTO, String> {
+public interface DegreeService extends FormServiceBase<DegreeFormDTO, DegreeDTO, String, Integer> {
 }

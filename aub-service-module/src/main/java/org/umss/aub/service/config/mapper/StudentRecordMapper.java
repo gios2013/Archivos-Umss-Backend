@@ -20,6 +20,7 @@ public class StudentRecordMapper implements CustomMapper<StudentRecordDTO, Stude
         StudentRecordDTO dto = new StudentRecordDTO();
         dto.setAttachment_id(studentRecord.getAttachment_id());
         dto.setName(studentRecord.getName());
+        dto.setPath(studentRecord.getPath());
         return dto;
     }
 

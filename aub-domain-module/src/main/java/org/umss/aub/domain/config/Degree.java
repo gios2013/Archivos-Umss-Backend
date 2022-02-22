@@ -1,8 +1,7 @@
 package org.umss.aub.domain.config;
 
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -33,6 +32,16 @@ public class Degree {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studentid")
     private Student student;
+
+    @OneToMany(mappedBy = "degree")
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    private List<Attachment> attachmentList;
+
+    @OneToMany(mappedBy = "degree")
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
+    private List<StudentRecord> studentRecords;
 
     @PrePersist
     public void initializeUuid(){

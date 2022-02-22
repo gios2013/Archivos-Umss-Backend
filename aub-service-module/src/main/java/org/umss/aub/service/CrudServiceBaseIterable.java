@@ -12,5 +12,6 @@ public interface CrudServiceBaseIterable<DTO, T, S> {
     DTO findByUuid(S Uuid);
     Page<DTO> findAll(Pageable pageable);
     List<DTO> findAllActive();
+    DTO editById(T id, DTO dto);
     void logicalDelete(T id);
 }

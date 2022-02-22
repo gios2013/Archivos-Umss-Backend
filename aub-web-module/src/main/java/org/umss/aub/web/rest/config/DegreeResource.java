@@ -1,6 +1,8 @@
 package org.umss.aub.web.rest.config;
 
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.umss.aub.dto.config.DegreeDTO;
 import org.umss.aub.dto.config.DegreeFormDTO;
@@ -32,5 +34,10 @@ public class DegreeResource {
     @PostMapping("/unclassified")
     public DegreeDTO saveDegreeFile(DegreeFormDTO degreeFormDTO){
         return degreeService.saveWithFiles(degreeFormDTO);
+    }
+
+    @GetMapping("/{degreeUuid}")
+    public DegreeDTO getDegreeByUuid(@PathVariable String degreeUuid){
+        return degreeService.getByUuid(degreeUuid);
     }
 }

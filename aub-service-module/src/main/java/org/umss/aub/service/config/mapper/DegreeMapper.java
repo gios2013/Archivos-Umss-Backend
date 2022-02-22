@@ -79,6 +79,8 @@ public class DegreeMapper implements CustomMapper<DegreeDTO, Degree> {
         dto.setDate_initial(degree.getDate_initial());
         dto.setTypeFileDTO(typeFileMapper.toDto(degree.getTypeFile()));
         dto.setStudentDTO(studentMapper.toDto(degree.getStudent()));
+        dto.setAttachmentDTOS(attachmentDTO);
+        dto.setStudentRecordDTOS(studentRecordDTO);
         return dto;
     }
 }

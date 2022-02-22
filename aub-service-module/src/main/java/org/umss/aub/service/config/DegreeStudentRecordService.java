@@ -5,5 +5,5 @@ import org.umss.aub.domain.config.Degree;
 import org.umss.aub.dto.config.StudentRecordDTO;
 import org.umss.aub.service.FileSaveBase;
 
-public interface DegreeStudentRecordService extends FileSaveBase<StudentRecordDTO, Degree, MultipartFile> {
+public interface DegreeStudentRecordService extends FileSaveBase<StudentRecordDTO, Degree, MultipartFile, Integer> {
 }

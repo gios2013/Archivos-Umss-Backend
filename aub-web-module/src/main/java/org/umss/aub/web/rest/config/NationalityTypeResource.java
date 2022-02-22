@@ -1,10 +1,7 @@
 package org.umss.aub.web.rest.config;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.umss.aub.dto.config.NationalityTypeDTO;
 import org.umss.aub.dto.config.NationalityTypeFormDTO;
 import org.umss.aub.service.config.NationalityTypeService;
@@ -30,5 +27,10 @@ public class NationalityTypeResource {
     @PostMapping
     public NationalityTypeDTO saveTypeNationality(NationalityTypeFormDTO nationalityTypeFormDTO){
         return nationalityTypeService.saveWithFiles(nationalityTypeFormDTO);
+    }
+
+    @PostMapping("/{id}")
+    public void deleteLogicalNationality(@PathVariable Integer id){
+        nationalityTypeService.logicalDelte(id);
     }
 }

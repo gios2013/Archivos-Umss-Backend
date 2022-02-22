@@ -80,4 +80,16 @@ public class NationalityTypeServiceImpl implements NationalityTypeService {
         NationalityType nationalityType = nationalityTypeMapper.toEntity(nationalityTypeDTO);
         return nationalityTypeMapper.toDto(nationalityTypeRepository.save(nationalityType));
     }
+
+    @Override
+    public NationalityTypeDTO getByUuid(String uuid) {
+        return null;
+    }
+
+    @Override
+    public void logicalDelte(Integer id) {
+        Optional<NationalityType> nationalityTypeOptional = nationalityTypeRepository.findById(id);
+        NationalityType nationalityType = nationalityTypeOptional.get();
+        nationalityType.setActive(Boolean.FALSE);
+    }
 }

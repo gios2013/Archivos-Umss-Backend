@@ -1,5 +1,6 @@
 package org.umss.aub.service.config.impl;
 
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +18,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -58,5 +60,20 @@ public class DegreeStudentRecordServiceImpl implements DegreeStudentRecordServic
             recordDTOList.add(studentRecordMapper.toDto(studentRecord));
         }
         return recordDTOList;
+    }
+
+    @Override
+    public List<StudentRecordDTO> getById(Degree degree) {
+//        List<StudentRecord> studentRecordList = studentRecordRepository.findAllByIdDegree(id);
+//        return studentRecordList.stream()
+//                .map(studentRecordMapper::toDto)
+//                .collect(Collectors.toList());
+        StudentRecord example1 = new StudentRecord();
+        example1.setDegree(degree);
+        List<StudentRecord> studentRecordList = studentRecordRepository.findAll(Example.of(example1));
+
+        return studentRecordList.stream()
+                .map(studentRecordMapper::toDto)
+                .collect(Collectors.toList());
     }
 }

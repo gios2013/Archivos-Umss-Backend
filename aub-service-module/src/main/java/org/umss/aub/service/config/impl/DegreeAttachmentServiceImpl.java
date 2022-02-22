@@ -1,5 +1,7 @@
 package org.umss.aub.service.config.impl;
 
+import org.springframework.core.io.UrlResource;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.FileSystemUtils;
@@ -18,6 +20,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -72,4 +76,29 @@ public class DegreeAttachmentServiceImpl implements DegreeAttachmentService {
         }
         return recordDTOList;
     }
+
+    @Override
+    public List<AttachmentDTO> getById(Degree degree) {
+//        List<Attachment> attachmentList = attachmentRepository.findAllByIdDegree(id);
+//        return attachmentList.stream()
+//                .map(attachmentMapper::toDto)
+//                .collect(Collectors.toList());
+
+        Attachment example1 = new Attachment();
+        example1.setDegree(degree);
+        List<Attachment> attachmentList = attachmentRepository.findAll(Example.of(example1));
+
+        for (Attachment attachment : attachmentList){
+            Path file = root.resolve(attachment.getName());
+
+            attachment.setFile(file.toUri());
+        }
+
+
+        return attachmentList.stream()
+                .map(attachmentMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+
 }

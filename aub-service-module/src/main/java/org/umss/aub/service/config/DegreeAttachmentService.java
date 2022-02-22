@@ -6,5 +6,5 @@ import org.umss.aub.dto.config.AttachmentDTO;
 import org.umss.aub.dto.config.DegreeDTO;
 import org.umss.aub.service.FileSaveBase;
 
-public interface DegreeAttachmentService extends FileSaveBase<AttachmentDTO, Degree, MultipartFile> {
+public interface DegreeAttachmentService extends FileSaveBase<AttachmentDTO, Degree, MultipartFile, Integer> {
 }

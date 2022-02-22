@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -23,4 +24,7 @@ public class DegreeDTO implements Serializable {
 
     private TypeFileDTO typeFileDTO;
     private StudentDTO studentDTO;
+
+    private List<AttachmentDTO> attachmentDTOS;
+    private List<StudentRecordDTO> studentRecordDTOS;
 }
