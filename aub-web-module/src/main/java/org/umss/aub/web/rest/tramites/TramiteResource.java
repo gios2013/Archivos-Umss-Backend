@@ -4,12 +4,9 @@ package org.umss.aub.web.rest.tramites;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import org.umss.aub.dto.config.StudentDTO;
 import org.umss.aub.dto.tramites.TramitesDTO;
 import org.umss.aub.service.tramites.TramiteService;
-
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -26,6 +23,7 @@ public class TramiteResource {
 
     @GetMapping
     public List<TramitesDTO> getTramites(){
+        log.info("Obteniendo Todos Los Tramites");
         return tramiteService.findAll();
     }
 

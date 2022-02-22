@@ -58,20 +58,11 @@ public class TramiteServiceImpl implements TramiteService {
     @Override
     @Transactional(readOnly = true)
     public List<TramitesDTO> findAllActive() {
-        //List<Tramites> tramitesActive = tramiteRepository.findAll()
-          //      .stream()
-            //    .filter(Tramites::getTre_hab)
-              //  .collect(Collectors.toList());
-
-        //return tramitesActive.stream().map(tramiteMapper::toDto).collect(Collectors.toList());
         return null;
     }
 
     @Override
     public void logicalDelete(Integer id) {
-        //Tramites tramites = tramiteRepository.findById(id)
-        // .orElseThrow(()-> new IllegalArgumentException("Invalid Tramite id: "+ id));
-
     }
 
 

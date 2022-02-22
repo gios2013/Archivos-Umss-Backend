@@ -2,8 +2,6 @@ package org.umss.aub.domain.tramites;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,11 +28,8 @@ public class Tramites {
     private String tre_tipo;
     private String tre_buscar_en;
     private Integer tre_cuenta;
-    @CreatedDate
     private Date created_at;
-    @LastModifiedDate
     private Date updated_at;
-
     @PrePersist
     public void initializeUuid(){
         this.setTre_id(UUID.randomUUID().toString());
