@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5433/test_aub_db
+    url: jdbc:postgresql://localhost:5432/test_aub_db
     username: test1
     password: can
     hikari:
