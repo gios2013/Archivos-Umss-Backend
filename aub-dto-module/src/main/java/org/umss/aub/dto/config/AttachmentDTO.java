@@ -10,7 +10,9 @@ import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.io.File;
 import java.net.URI;
+import java.nio.file.Path;
 import java.util.Date;
 
 @Getter
@@ -28,7 +30,7 @@ public class AttachmentDTO {
     private String path;
     private String attachment_id;
 
-    private URI file;
+    private Path file;
 
     private DegreeDTO degreeDTO;
 }

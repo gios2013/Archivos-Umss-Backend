@@ -21,6 +21,7 @@ public class StudentRecordMapper implements CustomMapper<StudentRecordDTO, Stude
         dto.setAttachment_id(studentRecord.getAttachment_id());
         dto.setName(studentRecord.getName());
         dto.setPath(studentRecord.getPath());
+        dto.setFile(studentRecord.getFile());
         return dto;
     }
 
@@ -29,6 +30,7 @@ public class StudentRecordMapper implements CustomMapper<StudentRecordDTO, Stude
         StudentRecord studentRecord = new StudentRecord();
         studentRecord.setAttachment_id(studentRecordDTO.getAttachment_id());
         studentRecord.setName(studentRecordDTO.getName());
+        studentRecord.setFile(studentRecordDTO.getFile());
         studentRecord.setDegree(degreeMapper.toEntity(studentRecordDTO.getDegreeDTO()));
         return studentRecord;
     }

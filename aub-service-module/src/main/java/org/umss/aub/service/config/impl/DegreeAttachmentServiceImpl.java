@@ -1,11 +1,13 @@
 package org.umss.aub.service.config.impl;
 
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.umss.aub.domain.config.Attachment;
 import org.umss.aub.domain.config.Degree;
 import org.umss.aub.dto.config.AttachmentDTO;
@@ -14,7 +16,9 @@ import org.umss.aub.repository.config.AttachmentRepository;
 import org.umss.aub.service.config.DegreeAttachmentService;
 import org.umss.aub.service.config.mapper.AttachmentMapper;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -89,9 +93,11 @@ public class DegreeAttachmentServiceImpl implements DegreeAttachmentService {
         List<Attachment> attachmentList = attachmentRepository.findAll(Example.of(example1));
 
         for (Attachment attachment : attachmentList){
-            Path file = root.resolve(attachment.getName());
-
-            attachment.setFile(file.toUri());
+            Path path = root.resolve(attachment.getName());
+//            File file = new File(path.toString());
+//            String url = MvcUriComponentsBuilder.;
+//            attachment.setPath(url);
+            attachment.setFile(path);
         }
 
 
@@ -100,5 +106,10 @@ public class DegreeAttachmentServiceImpl implements DegreeAttachmentService {
                 .collect(Collectors.toList());
     }
 
-
+    @Override
+    public Resource load(String name) throws MalformedURLException {
+        Path file = root.resolve(name);
+        Resource resource = new UrlResource(file.toUri());
+        return resource;
+    }
 }
