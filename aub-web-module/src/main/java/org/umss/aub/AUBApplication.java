@@ -57,14 +57,16 @@ public class AUBApplication {
             LOGGER.warn("The host name could not be determined, using 'localhost' as fallback");
         }
 
-        var textBlock = String.format("----------------------------------------------------------\n" +
-                        "                    Application \"%s\" is running! Access URLs:\n" +
-                        "                    Local:              %s://localhost:%s%s\n" +
-                        "                    External:           %s://%s:%s%s\n" +
-                        "                    Active Profile(s):  %s\n" +
-                        "                    Default Profile(s): %s\n" +
-                        "                ----------------------------------------------------------",
-                env.getProperty("spring.application.name"),
+        var textBlock = """
+
+                ----------------------------------------------------------
+                    Application "%s" is running! Access URLs:
+                    Local:              %s://localhost:%s%s
+                    External:           %s://%s:%s%s
+                    Active Profile(s):  %s
+                    Default Profile(s): %s
+                ----------------------------------------------------------
+                """.formatted(env.getProperty("spring.application.name"),
                 protocol,
                 serverPort,
                 contextPath,
