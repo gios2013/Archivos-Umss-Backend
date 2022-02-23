@@ -58,7 +58,7 @@ public class AUBApplication {
         }
 
         var textBlock = """
-
+                
                 ----------------------------------------------------------
                     Application "%s" is running! Access URLs:
                     Local:              %s://localhost:%s%s
