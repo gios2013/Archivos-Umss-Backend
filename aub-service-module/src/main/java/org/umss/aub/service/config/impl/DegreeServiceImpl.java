@@ -105,6 +105,21 @@ public class DegreeServiceImpl implements DegreeService {
     }
 
     @Override
+    public DegreeDTO editById(String uuid, DegreeDTO dto) {
+        Degree degree = degreeRepository.findOneByUuid(uuid);
+//        Degree edit = degreeMapper.toEntity(dto);
+
+        degree.setDegree_num(dto.getDegree_num());
+        degree.setDate_initial(dto.getDate_initial());
+        degree.setObservation(dto.getObservation());
+        degree.setFolio_num(dto.getFolio_num());
+        degree.setFolio_date(dto.getFolio_date());
+        degreeRepository.save(degree);
+
+        return degreeMapper.toDto(degree);
+    }
+
+    @Override
     public void logicalDelte(Integer id) {
 
     }

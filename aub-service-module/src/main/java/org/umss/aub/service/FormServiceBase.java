@@ -8,5 +8,6 @@ public interface FormServiceBase<DTO, D, S, T> {
     List<D> findAllByBachiller();
     D saveWithFiles(DTO dto);
     D getByUuid(S uuid);
+    D editById(S uuid, D dto);
     void logicalDelte(T id);
 }

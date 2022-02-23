@@ -1,0 +1,1 @@
+ALTER TABLE attachment ALTER COLUMN path TYPE varchar(255);

@@ -88,4 +88,9 @@ public class DegreeResource {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);
     }
+
+    @PostMapping("/edit/{degreUuid}")
+    public DegreeDTO editDegree(@RequestBody DegreeDTO degreeDTO, @PathVariable String degreUuid){
+        return degreeService.editById(degreUuid, degreeDTO);
+    }
 }

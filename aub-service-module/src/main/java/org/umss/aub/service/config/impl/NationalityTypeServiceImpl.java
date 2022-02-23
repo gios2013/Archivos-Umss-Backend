@@ -87,6 +87,11 @@ public class NationalityTypeServiceImpl implements NationalityTypeService {
     }
 
     @Override
+    public NationalityTypeDTO editById(String uuid, NationalityTypeDTO dto) {
+        return null;
+    }
+
+    @Override
     public void logicalDelte(Integer id) {
         Optional<NationalityType> nationalityTypeOptional = nationalityTypeRepository.findById(id);
         NationalityType nationalityType = nationalityTypeOptional.get();
