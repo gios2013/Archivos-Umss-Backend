@@ -29,6 +29,7 @@ public class TramiteResource {
 
     @PostMapping
     public TramitesDTO saveTramite(@RequestBody TramitesDTO tramitesDTO){
+        log.info("Guardando tramites {}", tramitesDTO);
         return tramiteService.save(tramitesDTO);
     }
 

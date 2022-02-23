@@ -34,6 +34,8 @@ public class AUBApplication {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/v1/config/**")
                         .allowedOrigins("http://localhost:4200");
+                registry.addMapping("/v1/tramites/**")
+                        .allowedOrigins("http://localhost:4200");
             }
         };
     }
