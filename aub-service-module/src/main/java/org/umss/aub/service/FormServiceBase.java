@@ -9,5 +9,6 @@ public interface FormServiceBase<DTO, D, S, T> {
     D saveWithFiles(DTO dto);
     D getByUuid(S uuid);
     D editById(S uuid, D dto);
-    void logicalDelte(T id);
+    void logicalDelete(T id);
+    void logicalEnable(T id);
 }

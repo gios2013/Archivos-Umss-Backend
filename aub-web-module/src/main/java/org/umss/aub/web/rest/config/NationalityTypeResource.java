@@ -29,8 +29,13 @@ public class NationalityTypeResource {
         return nationalityTypeService.saveWithFiles(nationalityTypeFormDTO);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/delete/{id}")
     public void deleteLogicalNationality(@PathVariable Integer id){
-        nationalityTypeService.logicalDelte(id);
+        nationalityTypeService.logicalDelete(id);
+    }
+
+    @PostMapping("/enable/{id}")
+    public void enableLogicalNationality(@PathVariable Integer id){
+        nationalityTypeService.logicalEnable(id);
     }
 }

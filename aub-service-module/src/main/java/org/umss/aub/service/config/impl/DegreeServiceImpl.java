@@ -120,7 +120,12 @@ public class DegreeServiceImpl implements DegreeService {
     }
 
     @Override
-    public void logicalDelte(Integer id) {
+    public void logicalDelete(Integer id) {
+
+    }
+
+    @Override
+    public void logicalEnable(Integer id) {
 
     }
 }

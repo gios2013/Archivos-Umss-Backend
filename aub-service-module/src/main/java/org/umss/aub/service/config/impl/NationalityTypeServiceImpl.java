@@ -92,9 +92,16 @@ public class NationalityTypeServiceImpl implements NationalityTypeService {
     }
 
     @Override
-    public void logicalDelte(Integer id) {
+    public void logicalDelete(Integer id) {
         Optional<NationalityType> nationalityTypeOptional = nationalityTypeRepository.findById(id);
         NationalityType nationalityType = nationalityTypeOptional.get();
         nationalityType.setActive(Boolean.FALSE);
+    }
+
+    @Override
+    public void logicalEnable(Integer id) {
+        Optional<NationalityType> nationalityTypeOptional = nationalityTypeRepository.findById(id);
+        NationalityType nationalityType = nationalityTypeOptional.get();
+        nationalityType.setActive(Boolean.TRUE);
     }
 }
