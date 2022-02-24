@@ -90,7 +90,7 @@ public class DegreeResource {
     }
 
     @PostMapping("/edit/{degreUuid}")
-    public DegreeDTO editDegree(@RequestBody DegreeDTO degreeDTO, @PathVariable String degreUuid){
+    public DegreeDTO editDegree(DegreeDTO degreeDTO, @PathVariable String degreUuid){
         return degreeService.editById(degreUuid, degreeDTO);
     }
 }
