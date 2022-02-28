@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -16,12 +17,12 @@ public class DegreeFormDTO {
 
     private Integer degree_num;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date_initial;
+    private LocalDate date_initial;
     private String typeUuid;
     private String observation;
     private Integer folio_num;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date folio_date;
+    private LocalDate folio_date;
     private List<MultipartFile> attachment;
     private List<MultipartFile> studentRecord;
 

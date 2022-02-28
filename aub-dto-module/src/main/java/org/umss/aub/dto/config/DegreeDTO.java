@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,11 +20,11 @@ public class DegreeDTO implements Serializable {
     private String degree_id;
     private Integer degree_num;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date_initial;
+    private LocalDate date_initial;
     private String observation;
     private Integer folio_num;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date folio_date;
+    private LocalDate folio_date;
 
     private TypeFileDTO typeFileDTO;
     private StudentDTO studentDTO;
