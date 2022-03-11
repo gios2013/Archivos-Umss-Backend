@@ -8,4 +8,7 @@ import org.umss.aub.domain.config.TypeFile;
 public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Query("select s from Student s where s.student_id = ?1")
     Student findOneByUuid(String uuid);
+
+    @Query("select s from Student s where s.ci = ?1")
+    Student findOneByCi(Integer ci);
 }

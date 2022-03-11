@@ -34,9 +34,14 @@ public class StudentResource {
         return studentService.findByUuid(studentUuid);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Optional<StudentDTO> getById(@PathVariable Integer id){
         return studentService.findById(id);
+    }
+
+    @GetMapping("/ci/{ci}")
+    public StudentDTO getByCi(@PathVariable Integer ci){
+        return studentService.findByCi(ci);
     }
 
 }

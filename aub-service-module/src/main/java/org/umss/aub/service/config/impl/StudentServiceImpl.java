@@ -54,6 +54,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public StudentDTO findByCi(Integer ci){
+        Student student = studentRepository.findOneByCi(ci);
+        return studentMapper.toDto(student);
+    }
+
+    @Override
     public List<StudentDTO> findAllActive() {
         return null;
     }
