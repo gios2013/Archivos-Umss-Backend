@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.nio.file.Path;
 import java.util.Date;
 
 @Entity
@@ -25,6 +26,8 @@ public class StudentRecord {
     private Long size;
     private String path;
     private String attachment_id;
+    @Transient
+    private Path file;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "degreeid")

@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.io.File;
+import java.net.URI;
+import java.nio.file.Path;
 import java.util.Date;
 
 @Entity
@@ -26,6 +29,8 @@ public class Attachment {
     private Long size;
     private String path;
     private String attachment_id;
+    @Transient
+    private Path file;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "degreeid")

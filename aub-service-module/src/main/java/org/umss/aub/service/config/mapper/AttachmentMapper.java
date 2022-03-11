@@ -20,6 +20,8 @@ public class AttachmentMapper implements CustomMapper<AttachmentDTO, Attachment>
         AttachmentDTO dto = new AttachmentDTO();
         dto.setAttachment_id(attachment.getAttachment_id());
         dto.setName(attachment.getName());
+        dto.setPath(attachment.getPath());
+        dto.setFile(attachment.getFile());
         return dto;
     }
 
@@ -28,6 +30,7 @@ public class AttachmentMapper implements CustomMapper<AttachmentDTO, Attachment>
         Attachment attachment = new Attachment();
         attachment.setAttachment_id(attachmentDTO.getAttachment_id());
         attachment.setName(attachmentDTO.getName());
+        attachment.setFile(attachmentDTO.getFile());
         attachment.setDegree(degreeMapper.toEntity(attachmentDTO.getDegreeDTO()));
         return attachment;
     }

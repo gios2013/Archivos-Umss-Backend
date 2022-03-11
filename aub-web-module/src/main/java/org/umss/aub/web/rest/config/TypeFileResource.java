@@ -2,6 +2,7 @@ package org.umss.aub.web.rest.config;
 
 
 import org.springframework.web.bind.annotation.*;
+import org.umss.aub.dto.config.DegreeDTO;
 import org.umss.aub.dto.config.TypeFileDTO;
 import org.umss.aub.service.config.TypeFileService;
 
@@ -24,7 +25,7 @@ public class TypeFileResource {
     }
 
     @PostMapping
-    public TypeFileDTO saveType(@RequestBody TypeFileDTO typeFileDTO){
+    public TypeFileDTO saveType(TypeFileDTO typeFileDTO){
         return typeFileService.save(typeFileDTO);
     }
 
@@ -36,5 +37,15 @@ public class TypeFileResource {
     @GetMapping("/{typeUuid}")
     public TypeFileDTO getByUuid(@PathVariable String typeUuid){
         return typeFileService.findByUuid(typeUuid);
+    }
+
+    @GetMapping("/{typeUuid}/degree")
+    public List<DegreeDTO> getAllDegrees(@PathVariable String typeUuid){
+        return typeFileService.getAllByUuid(typeUuid);
+    }
+
+    @PostMapping("/{typeUuid}")
+    public TypeFileDTO updateType(@RequestBody TypeFileDTO typeFileDTO, @PathVariable String typeUuid){
+        return typeFileService.editByUuid(typeUuid, typeFileDTO);
     }
 }
