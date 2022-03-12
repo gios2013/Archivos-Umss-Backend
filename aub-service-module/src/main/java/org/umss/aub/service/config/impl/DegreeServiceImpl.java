@@ -16,6 +16,7 @@ import org.umss.aub.service.config.StudentService;
 import org.umss.aub.service.config.mapper.DegreeMapper;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -80,7 +81,13 @@ public class DegreeServiceImpl implements DegreeService {
         studentDTO.setGender(degreeFormDTO.getGender());
         studentDTO.setNationality(degreeFormDTO.getNationality());
 
-        StudentDTO est =studentService.save(studentDTO);
+
+        StudentDTO est;
+        if (Objects.isNull(studentRepository.findOneByCi(studentDTO.getCi()))){
+            est =studentService.save(studentDTO);
+        }else {
+            est = studentService.findByCi(studentDTO.getCi());
+        }
 
         Student student = studentRepository.findOneByUuid(est.getStudent_id());
 
