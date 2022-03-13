@@ -18,8 +18,7 @@ public class GroupFileFormDTO {
     private Integer minimumrange;
     private Integer maximumrange;
     private String observation;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate date_initial;
+    private Integer year_initial;
     private String group_file_id;
 
     private String typeUuid;
