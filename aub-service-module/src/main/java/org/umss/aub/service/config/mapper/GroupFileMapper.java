@@ -24,12 +24,12 @@ public class GroupFileMapper implements CustomMapper<GroupFileDTO, GroupFile> {
     public GroupFile toEntity(GroupFileDTO groupFileDTO) {
         GroupFile groupFile = new GroupFile();
         groupFile.setId(groupFileDTO.getId());
-        groupFile.setGroupnum(groupFile.getGroupnum());
-        groupFile.setMinimumrange(groupFile.getMinimumrange());
-        groupFile.setMaximumrange(groupFile.getMaximumrange());
-        groupFile.setObservation(groupFile.getObservation());
-        groupFile.setDate_initial(groupFile.getDate_initial());
-        groupFile.setGroup_file_id(groupFile.getGroup_file_id());
+        groupFile.setGroupnum(groupFileDTO.getGroupnum());
+        groupFile.setMinimumrange(groupFileDTO.getMinimumrange());
+        groupFile.setMaximumrange(groupFileDTO.getMaximumrange());
+        groupFile.setObservation(groupFileDTO.getObservation());
+        groupFile.setDate_initial(groupFileDTO.getDate_initial());
+        groupFile.setGroup_file_id(groupFileDTO.getGroup_file_id());
         return groupFile;
     }
 }

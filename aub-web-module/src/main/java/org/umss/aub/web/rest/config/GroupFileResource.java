@@ -22,7 +22,7 @@ public class GroupFileResource {
     }
 
     @PostMapping
-    public GroupFileDTO saveGroup(GroupFileDTO groupFileDTO){
+    public GroupFileDTO saveGroup(@RequestBody GroupFileDTO groupFileDTO){
         return groupFileService.save(groupFileDTO);
     }
 
