@@ -2,6 +2,7 @@ package org.umss.aub.web.rest.config;
 
 import org.springframework.web.bind.annotation.*;
 import org.umss.aub.dto.config.GroupFileDTO;
+import org.umss.aub.dto.config.GroupFileFormDTO;
 import org.umss.aub.service.config.GroupFileService;
 
 import java.util.List;
@@ -22,8 +23,8 @@ public class GroupFileResource {
     }
 
     @PostMapping
-    public GroupFileDTO saveGroup(@RequestBody GroupFileDTO groupFileDTO){
-        return groupFileService.save(groupFileDTO);
+    public GroupFileDTO saveGroup(@RequestBody GroupFileFormDTO groupFileFormDTO){
+        return groupFileService.saveForm(groupFileFormDTO);
     }
 
     @GetMapping("/{groupUuid}")
