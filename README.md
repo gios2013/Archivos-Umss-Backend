@@ -3,6 +3,7 @@
 # Development
 Start `aub-web-module` application from command line
 ```shell
- mvn clean
+ mvn clean install
+ mvn compile
  mvn -pl aub-web-module -am spring-boot:run
 ```
