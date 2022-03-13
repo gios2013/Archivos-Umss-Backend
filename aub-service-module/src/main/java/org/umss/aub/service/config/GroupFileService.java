@@ -7,4 +7,6 @@ import org.umss.aub.service.FormServiceBase;
 
 public interface GroupFileService extends CrudServiceBase<GroupFileDTO, Integer, String> {
     GroupFileDTO saveForm(GroupFileFormDTO groupFileFormDTO);
+
+    GroupFileDTO editForm(String Uuid, GroupFileDTO dto);
 }

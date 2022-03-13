@@ -53,6 +53,20 @@ public class GroupFileServiceImpl implements GroupFileService {
     }
 
     @Override
+    public GroupFileDTO editForm(String Uuid, GroupFileDTO dto){
+        GroupFile groupFile = groupFileRepository.findOneByUuid(Uuid);
+
+        groupFile.setGroupnum(dto.getGroupnum());
+        groupFile.setMinimumrange(dto.getMinimumrange());
+        groupFile.setMaximumrange(dto.getMaximumrange());
+        groupFile.setObservation(dto.getObservation());
+        groupFile.setYear_initial(dto.getYear_initial());
+        groupFileRepository.save(groupFile);
+
+        return groupFileMapper.toDto(groupFile);
+    }
+
+    @Override
     public Optional<GroupFileDTO> findById(Integer id) {
         return Optional.empty();
     }

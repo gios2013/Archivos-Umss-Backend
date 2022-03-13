@@ -45,9 +45,9 @@ public class TypeFileResource {
         return typeFileService.getAllByUuid(typeUuid);
     }
 
-    @GetMapping("/{groupUuid}/degree")
-    public List<GroupFileDTO> getAllGroups(@PathVariable String groupUuid){
-        return typeFileService.getAllGroupsByUuid(groupUuid);
+    @GetMapping("/{typeUuid}/group")
+    public List<GroupFileDTO> getAllGroups(@PathVariable String typeUuid){
+        return typeFileService.getAllGroupsByUuid(typeUuid);
     }
 
     @PostMapping("/{typeUuid}")
