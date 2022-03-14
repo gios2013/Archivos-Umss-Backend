@@ -33,9 +33,10 @@ public class GroupFileResource {
         return groupFileService.editForm(groupUuid, groupFileDTO);
     }
 
-    @DeleteMapping("/delete/{groupUuid}")
-    public void deleteNationality(@PathVariable String groupUuid){
+    @PostMapping("/delete/{groupUuid}")
+    public String deleteNationality(@PathVariable String groupUuid){
         groupFileService.deleteGroup(groupUuid);
+        return "Eliminado " + groupUuid;
     }
 
     @GetMapping("/{groupUuid}")

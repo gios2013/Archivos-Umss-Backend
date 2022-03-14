@@ -19,6 +19,7 @@ public class DegreeFormDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date_initial;
     private String typeUuid;
+    private String groupUuid;
     private String observation;
     private Integer folio_num;
     @DateTimeFormat(pattern = "yyyy-MM-dd")

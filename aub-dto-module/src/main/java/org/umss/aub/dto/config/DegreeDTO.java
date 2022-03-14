@@ -28,6 +28,7 @@ public class DegreeDTO implements Serializable {
 
     private TypeFileDTO typeFileDTO;
     private StudentDTO studentDTO;
+    private GroupFileDTO groupFileDTO;
 
     private List<AttachmentDTO> attachmentDTOS;
     private List<StudentRecordDTO> studentRecordDTOS;

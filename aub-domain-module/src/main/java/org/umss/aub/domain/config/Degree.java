@@ -35,6 +35,9 @@ public class Degree {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studentid")
     private Student student;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_file_id")
+    private GroupFile groupFile;
 
     @OneToMany(mappedBy = "degree")
     @Getter(AccessLevel.NONE)
