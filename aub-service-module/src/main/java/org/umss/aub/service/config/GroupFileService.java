@@ -9,4 +9,6 @@ public interface GroupFileService extends CrudServiceBase<GroupFileDTO, Integer,
     GroupFileDTO saveForm(GroupFileFormDTO groupFileFormDTO);
 
     GroupFileDTO editForm(String Uuid, GroupFileDTO dto);
+
+    void deleteGroup(String uuid);
 }

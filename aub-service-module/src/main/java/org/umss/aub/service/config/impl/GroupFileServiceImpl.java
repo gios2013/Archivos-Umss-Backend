@@ -93,6 +93,12 @@ public class GroupFileServiceImpl implements GroupFileService {
 
     @Override
     public void logicalDelete(Integer id) {
+    }
 
+    @Override
+    public void deleteGroup(String uuid){
+        GroupFile groupFile = groupFileRepository.findOneByUuid(uuid);
+        Integer groupId = groupFile.getId();
+        groupFileRepository.deleteById(groupId);
     }
 }
