@@ -12,6 +12,7 @@ import org.umss.aub.dto.config.StudentRecordDTO;
 import org.umss.aub.service.CustomMapper;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class DegreeMapper implements CustomMapper<DegreeDTO, Degree> {
@@ -41,7 +42,9 @@ public class DegreeMapper implements CustomMapper<DegreeDTO, Degree> {
         dto.setFolio_date(degree.getFolio_date());
         dto.setTypeFileDTO(typeFileMapper.toDto(degree.getTypeFile()));
         dto.setStudentDTO(studentMapper.toDto(degree.getStudent()));
-        dto.setGroupFileDTO(groupFileMapper.toDto(degree.getGroupFile()));
+        if (Objects.nonNull(degree.getGroupFile())){
+            dto.setGroupFileDTO(groupFileMapper.toDto(degree.getGroupFile()));
+        }
         return dto;
     }
 
