@@ -12,6 +12,11 @@ import org.umss.aub.service.tramites.SolicitudService;
 import org.umss.aub.service.tramites.mapper.SolicitudMapper;
 
 import javax.persistence.EntityNotFoundException;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +43,8 @@ public class SolicitudServiceImpl implements SolicitudService {
         Solicitud solicitud = SolicitudMapper.INSTANCE.solicitudDTOToSolicitud(solicitudDTO);
         solicitud = this.solicitudRepository.save(solicitud);
 
+        solicitud.setCreatedAt(Timestamp.from(Instant.now()));
+        solicitud.setUpdatedAt(Timestamp.from(Instant.now()));
         return SolicitudMapper.INSTANCE.solicitudToSolicitudDTO(solicitud);
     }
 

@@ -1,13 +1,13 @@
 -- Table: public.tramites
 CREATE TABLE Solicitud
 (
-    id SMALLSERIAL PRIMARY KEY,
+    id SMALLSERIAL NOT NULL PRIMARY KEY,
     user_id VARCHAR,
     email VARCHAR,
     account VARCHAR,
     name VARCHAR,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
 
