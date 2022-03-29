@@ -26,6 +26,7 @@ public class TramiteMapper implements CustomMapper<TramitesDTO, Tramites> {
         tramitesDTO.setTipo(tramites.getTre_tipo());
         tramitesDTO.setBuscar_en(tramites.getTre_buscar_en());
         tramitesDTO.setCuenta(tramites.getTre_cuenta());
+        tramitesDTO.setActive(tramites.getActive());
         return tramitesDTO;
     }
 
@@ -45,6 +46,7 @@ public class TramiteMapper implements CustomMapper<TramitesDTO, Tramites> {
         tramites.setTre_tipo(tramitesDTO.getTipo());
         tramites.setTre_buscar_en(tramitesDTO.getBuscar_en());
         tramites.setTre_cuenta(tramitesDTO.getCuenta());
+        tramites.setActive(tramitesDTO.getActive());
         return tramites;
     }
 }
