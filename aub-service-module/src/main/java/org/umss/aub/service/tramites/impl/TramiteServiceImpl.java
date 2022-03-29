@@ -3,6 +3,7 @@ package org.umss.aub.service.tramites.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.umss.aub.domain.config.SectionFile;
 import org.umss.aub.domain.tramites.Tramites;
 import org.umss.aub.dto.tramites.TramitesDTO;
 import org.umss.aub.repository.tramites.TramiteRepository;
@@ -58,11 +59,18 @@ public class TramiteServiceImpl implements TramiteService {
     @Override
     @Transactional(readOnly = true)
     public List<TramitesDTO> findAllActive() {
-        return null;
+        List<Tramites> tramitesActive = tramiteRepository.findAll().stream()
+                .filter(Tramites::getActive)
+                .collect(Collectors.toList());
+        return tramitesActive.stream().map(tramiteMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
     public void logicalDelete(Integer id) {
+        var tramites = tramiteRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException("El tramite "+id+" No existe"));
+        tramites.setActive(Boolean.FALSE);
+        tramiteRepository.save(tramites);
     }
 
 

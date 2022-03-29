@@ -1,0 +1,1 @@
+ALTER TABLE tramites ADD COLUMN active bool;

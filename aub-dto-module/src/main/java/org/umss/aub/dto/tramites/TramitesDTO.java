@@ -4,10 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @NoArgsConstructor
-public class TramitesDTO {
+public class TramitesDTO implements Serializable {
 
     private Integer codigo;
     private String id;
@@ -22,6 +24,8 @@ public class TramitesDTO {
     private String tipo;
     private String buscar_en;
     private Integer cuenta;
+    private Boolean active = Boolean.TRUE;
+
 
 
 }

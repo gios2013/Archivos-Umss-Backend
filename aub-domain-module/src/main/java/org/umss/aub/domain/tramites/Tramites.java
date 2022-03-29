@@ -30,6 +30,7 @@ public class Tramites {
     private Integer tre_cuenta;
     private Date created_at;
     private Date updated_at;
+    private Boolean active;
     @PrePersist
     public void initializeUuid(){
         this.setTre_id(UUID.randomUUID().toString());
