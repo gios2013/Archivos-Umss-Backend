@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "group_file")
@@ -20,7 +21,14 @@ public class GroupFile {
     private Integer minimumrange;
     private Integer maximumrange;
     private String observation;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate date_initial;
+    private Integer year_initial;
     private String group_file_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_group_id")
+    private TypeFile typeFile;
+
+    @PrePersist
+    public void initializeUuid(){
+        this.setGroup_file_id(UUID.randomUUID().toString());
+    }
 }

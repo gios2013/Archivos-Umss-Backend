@@ -1,7 +1,9 @@
 package org.umss.aub.web.rest.config;
 
 import org.springframework.web.bind.annotation.*;
+import org.umss.aub.dto.config.DegreeDTO;
 import org.umss.aub.dto.config.GroupFileDTO;
+import org.umss.aub.dto.config.GroupFileFormDTO;
 import org.umss.aub.service.config.GroupFileService;
 
 import java.util.List;
@@ -22,8 +24,24 @@ public class GroupFileResource {
     }
 
     @PostMapping
-    public GroupFileDTO saveGroup(GroupFileDTO groupFileDTO){
-        return groupFileService.save(groupFileDTO);
+    public GroupFileDTO saveGroup(GroupFileFormDTO groupFileFormDTO){
+        return groupFileService.saveForm(groupFileFormDTO);
+    }
+
+    @PostMapping("/edit/{groupUuid}")
+    public GroupFileDTO editGroup(GroupFileDTO groupFileDTO, @PathVariable String groupUuid){
+        return groupFileService.editForm(groupUuid, groupFileDTO);
+    }
+
+    @GetMapping("/{groupUuid}/degree")
+    public List<DegreeDTO> getAllDegrees(@PathVariable String groupUuid){
+        return groupFileService.findAllDegrees(groupUuid);
+    }
+
+    @PostMapping("/delete/{groupUuid}")
+    public String deleteNationality(@PathVariable String groupUuid){
+        groupFileService.deleteGroup(groupUuid);
+        return "Eliminado " + groupUuid;
     }
 
     @GetMapping("/{groupUuid}")

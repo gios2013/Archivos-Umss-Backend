@@ -1,0 +1,1 @@
+ALTER TABLE student ALTER COLUMN passport TYPE varchar(255);

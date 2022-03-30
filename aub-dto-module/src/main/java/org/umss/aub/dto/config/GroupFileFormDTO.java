@@ -7,10 +7,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
-public class GroupFileDTO {
+public class GroupFileFormDTO {
 
     private Integer id;
     private Integer groupnum;
@@ -20,6 +21,5 @@ public class GroupFileDTO {
     private Integer year_initial;
     private String group_file_id;
 
-    private TypeFileDTO typeFileDTO;
-
+    private String typeUuid;
 }

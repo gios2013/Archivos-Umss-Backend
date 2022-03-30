@@ -93,4 +93,9 @@ public class DegreeResource {
     public DegreeDTO editDegree(DegreeDTO degreeDTO, @PathVariable String degreUuid){
         return degreeService.editById(degreUuid, degreeDTO);
     }
+
+    @PostMapping("/group_together/{groupUuid}/{degreeUuid}")
+    public DegreeDTO groupTogether(@PathVariable String groupUuid, @PathVariable String degreeUuid){
+        return degreeService.groupTogether(groupUuid, degreeUuid);
+    }
 }

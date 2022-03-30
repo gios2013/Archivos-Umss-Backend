@@ -3,6 +3,7 @@ package org.umss.aub.web.rest.config;
 
 import org.springframework.web.bind.annotation.*;
 import org.umss.aub.dto.config.DegreeDTO;
+import org.umss.aub.dto.config.GroupFileDTO;
 import org.umss.aub.dto.config.TypeFileDTO;
 import org.umss.aub.service.config.TypeFileService;
 
@@ -42,6 +43,11 @@ public class TypeFileResource {
     @GetMapping("/{typeUuid}/degree")
     public List<DegreeDTO> getAllDegrees(@PathVariable String typeUuid){
         return typeFileService.getAllByUuid(typeUuid);
+    }
+
+    @GetMapping("/{typeUuid}/group")
+    public List<GroupFileDTO> getAllGroups(@PathVariable String typeUuid){
+        return typeFileService.getAllGroupsByUuid(typeUuid);
     }
 
     @PostMapping("/{typeUuid}")

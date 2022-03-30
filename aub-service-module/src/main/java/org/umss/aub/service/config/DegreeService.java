@@ -7,4 +7,5 @@ import org.umss.aub.service.CrudServiceBase;
 import org.umss.aub.service.FormServiceBase;
 
 public interface DegreeService extends FormServiceBase<DegreeFormDTO, DegreeDTO, String, Integer> {
+    DegreeDTO groupTogether(String groupUuid, String degreeUuid);
 }

@@ -2,6 +2,7 @@ package org.umss.aub.service.config.mapper;
 
 import org.springframework.stereotype.Component;
 import org.umss.aub.domain.config.Degree;
+import org.umss.aub.domain.config.GroupFile;
 import org.umss.aub.domain.config.Student;
 import org.umss.aub.domain.config.TypeFile;
 import org.umss.aub.dto.config.AttachmentDTO;
@@ -11,6 +12,7 @@ import org.umss.aub.dto.config.StudentRecordDTO;
 import org.umss.aub.service.CustomMapper;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class DegreeMapper implements CustomMapper<DegreeDTO, Degree> {
@@ -19,9 +21,12 @@ public class DegreeMapper implements CustomMapper<DegreeDTO, Degree> {
 
     private final StudentMapper studentMapper;
 
-    public DegreeMapper(TypeFileMapper typeFileMapper, StudentMapper studentMapper) {
+    private final GroupFileMapper groupFileMapper;
+
+    public DegreeMapper(TypeFileMapper typeFileMapper, StudentMapper studentMapper, GroupFileMapper groupFileMapper) {
         this.typeFileMapper = typeFileMapper;
         this.studentMapper = studentMapper;
+        this.groupFileMapper = groupFileMapper;
     }
 
 
@@ -37,6 +42,9 @@ public class DegreeMapper implements CustomMapper<DegreeDTO, Degree> {
         dto.setFolio_date(degree.getFolio_date());
         dto.setTypeFileDTO(typeFileMapper.toDto(degree.getTypeFile()));
         dto.setStudentDTO(studentMapper.toDto(degree.getStudent()));
+        if (Objects.nonNull(degree.getGroupFile())){
+            dto.setGroupFileDTO(groupFileMapper.toDto(degree.getGroupFile()));
+        }
         return dto;
     }
 
@@ -53,9 +61,11 @@ public class DegreeMapper implements CustomMapper<DegreeDTO, Degree> {
 
         TypeFile typeFile = typeFileMapper.toEntity(degreeDTO.getTypeFileDTO());
         Student student = studentMapper.toEntity(degreeDTO.getStudentDTO());
+        GroupFile groupFile = groupFileMapper.toEntity(degreeDTO.getGroupFileDTO());
 
         degree.setTypeFile(typeFile);
         degree.setStudent(student);
+        degree.setGroupFile(groupFile);
         return degree;
     }
 

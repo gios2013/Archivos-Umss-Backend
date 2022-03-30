@@ -3,10 +3,12 @@ package org.umss.aub.service.config.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.umss.aub.domain.config.Degree;
+import org.umss.aub.domain.config.GroupFile;
 import org.umss.aub.domain.config.Student;
 import org.umss.aub.domain.config.TypeFile;
 import org.umss.aub.dto.config.*;
 import org.umss.aub.repository.config.DegreeRepository;
+import org.umss.aub.repository.config.GroupFileRepository;
 import org.umss.aub.repository.config.StudentRepository;
 import org.umss.aub.repository.config.TypeFileRepository;
 import org.umss.aub.service.config.DegreeAttachmentService;
@@ -16,6 +18,7 @@ import org.umss.aub.service.config.StudentService;
 import org.umss.aub.service.config.mapper.DegreeMapper;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -37,10 +40,12 @@ public class DegreeServiceImpl implements DegreeService {
 
     private final DegreeStudentRecordService degreeStudentRecordService;
 
+    private final GroupFileRepository groupFileRepository;
+
     public DegreeServiceImpl(DegreeMapper degreeMapper, DegreeRepository degreeRepository,
                              TypeFileRepository typeFileRepository, StudentRepository studentRepository,
                              StudentService studentService, DegreeAttachmentService degreeAttachmentService,
-                             DegreeStudentRecordService degreeStudentRecordService) {
+                             DegreeStudentRecordService degreeStudentRecordService, GroupFileRepository groupFileRepository) {
         this.degreeMapper = degreeMapper;
         this.degreeRepository = degreeRepository;
         this.typeFileRepository = typeFileRepository;
@@ -48,6 +53,7 @@ public class DegreeServiceImpl implements DegreeService {
         this.studentService = studentService;
         this.degreeAttachmentService = degreeAttachmentService;
         this.degreeStudentRecordService = degreeStudentRecordService;
+        this.groupFileRepository = groupFileRepository;
     }
 
 
@@ -80,7 +86,13 @@ public class DegreeServiceImpl implements DegreeService {
         studentDTO.setGender(degreeFormDTO.getGender());
         studentDTO.setNationality(degreeFormDTO.getNationality());
 
-        StudentDTO est =studentService.save(studentDTO);
+
+        StudentDTO est;
+        if (Objects.isNull(studentRepository.findOneByCi(studentDTO.getCi()))){
+            est =studentService.save(studentDTO);
+        }else {
+            est = studentService.findByCi(studentDTO.getCi());
+        }
 
         Student student = studentRepository.findOneByUuid(est.getStudent_id());
 
@@ -114,6 +126,16 @@ public class DegreeServiceImpl implements DegreeService {
         degree.setObservation(dto.getObservation());
         degree.setFolio_num(dto.getFolio_num());
         degree.setFolio_date(dto.getFolio_date());
+        degreeRepository.save(degree);
+
+        return degreeMapper.toDto(degree);
+    }
+
+    @Override
+    public DegreeDTO groupTogether(String groupUuid, String degreeUuid){
+        Degree degree = degreeRepository.findOneByUuid(degreeUuid);
+        GroupFile groupFile = groupFileRepository.findOneByUuid(groupUuid);
+        degree.setGroupFile(groupFile);
         degreeRepository.save(degree);
 
         return degreeMapper.toDto(degree);
