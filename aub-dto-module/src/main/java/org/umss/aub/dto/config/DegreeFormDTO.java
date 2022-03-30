@@ -30,7 +30,7 @@ public class DegreeFormDTO {
     //Estudiante
 
     private Integer ci;
-    private Integer passport;
+    private String passport;
     private String lastname;
     private String name;
     private String gender;

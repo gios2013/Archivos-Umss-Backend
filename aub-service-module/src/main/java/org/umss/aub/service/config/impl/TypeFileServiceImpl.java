@@ -18,6 +18,7 @@ import org.umss.aub.service.config.mapper.GroupFileMapper;
 import org.umss.aub.service.config.mapper.TypeFileMapper;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -88,7 +89,8 @@ public class TypeFileServiceImpl implements TypeFileService {
         example.setTypeFile(typeExample);
 
         List<Degree> degrees = degreeRepository.findAll(Example.of(example));
-        return degrees.stream().map(degreeMapper::toDto)
+        return degrees.stream().filter(degree -> Objects.isNull(degree.getGroupFile()))
+                .map(degreeMapper::toDto)
                 .collect(Collectors.toList());
     }
 

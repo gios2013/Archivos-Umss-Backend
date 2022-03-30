@@ -22,7 +22,7 @@ public class Student {
     private Integer id;
     private String student_id;
     private Integer ci;
-    private Integer passport;
+    private String passport;
     private String lastname;
     private String name;
     private String gender;
