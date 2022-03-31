@@ -14,9 +14,6 @@ import org.umss.aub.service.tramites.mapper.SolicitudMapper;
 import javax.persistence.EntityNotFoundException;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
