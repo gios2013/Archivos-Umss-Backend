@@ -10,6 +10,6 @@ spring:
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
 # ===================================================================
-application:
-  name: Archivos Umms Backend
-  initials: AUB
+  application:
+    name: Archivos Umms Backend
+    initials: AUB

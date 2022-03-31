@@ -11,13 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("v1/tramites/configTramites")
-public class TramiteResource {
+public class ConfiguracionTramiteResource {
 
-    private final Logger log = LoggerFactory.getLogger(TramiteResource.class);
+    private final Logger log = LoggerFactory.getLogger(ConfiguracionTramiteResource.class);
 
     private final TramiteService tramiteService;
 
-    public TramiteResource(TramiteService tramiteService) {
+    public ConfiguracionTramiteResource(TramiteService tramiteService) {
         this.tramiteService = tramiteService;
     }
 
